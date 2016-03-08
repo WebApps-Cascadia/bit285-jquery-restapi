@@ -5,8 +5,8 @@ $(document).ready(function(){
     var usernametext = $('input#user_name');
     var toynametext = $('input#toy_name');
     var toylegstext = $('input#legs');
-		var colordropdown = $('select#toy_color');
-		var userdropdown = $('select#toy_owner');
+	var colordropdown = $('select#toy_color');
+	var userdropdown = $('select#toy_owner');
     var toydropdown = $('select#toy');
     // Populate the dropdown items using REST API
     getColors(colordropdown);
@@ -21,7 +21,15 @@ $(document).ready(function(){
           data: {
               // TODO: start with static date to see it working,
               // then use the jQuery .val() method to get the value of the username UI field
+             /* Name: "Pawanjit",
+              Address: "123 street",
+              City: "Bothell",
+              State: "WA",
+              Zip: "98562",
+              Phone: null,
+              Email: "pawanjit@gmail.com"*/
 
+              Name: usernametext.val()
           }
         }).done(function(result) {
             // display a message that the user is added
@@ -37,9 +45,17 @@ $(document).ready(function(){
 					url: baseURI + "toys/",
 					method: "POST",
 					data: {
-              // TODO: start with static date to see it working,
+              // TODO: start with static data to see it working,
               // then use the jQuery .val() method to get the value of each UI field
+					  /*  Name: "Frog",
+					    NumberLegs: 4,
+					    ColorID: 2,
+                        OwnerID: 4*/
 
+					    Name: toynametext.val(),
+					    NumberLegs: toylegstext.val(),
+					    ColorID: colordropdown.val(),
+                        OwnerID: userdropdown.val()
 
 					}
         }).done(function(result) {
@@ -72,7 +88,7 @@ $(document).ready(function(){
 		});
   };
 	function getUsers(dropdown){ // Add users to the dropdown
-    //TODO: write the AJAX method
+    //COMPLETE: TODO: write the AJAX method
 	    $.ajax({
 	        url: baseURI + "users/",
 	        method: "GET"
@@ -85,7 +101,7 @@ $(document).ready(function(){
    };
   // Add toys to the dropdown
     function getToys(dropdown){
-        //TODO: write the AJAX method
+        //COMPLETE: TODO: write the AJAX method
 
         $.ajax({
             url: baseURI + "toys/",
