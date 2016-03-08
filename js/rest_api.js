@@ -73,11 +73,29 @@ $(document).ready(function(){
   };
 	function getUsers(dropdown){ // Add users to the dropdown
     //TODO: write the AJAX method
-
+	    $.ajax({
+	        url: baseURI + "users/",
+	        method: "GET"
+	    }).done(function (result) {
+	        console.log(result);  // Take a peek at the data
+	        $.each(result, function (k, v) {
+	            dropdown.append('<option value="' + v.UserID + '">' + v.Name + '</option>');
+	        });
+	    });
    };
   // Add toys to the dropdown
     function getToys(dropdown){
-      //TODO: write the AJAX method
+        //TODO: write the AJAX method
+
+        $.ajax({
+            url: baseURI + "toys/",
+            method: "GET"
+        }).done(function (result) {
+            console.log(result);  // Take a peek at the data
+            $.each(result, function (k, v) {
+                dropdown.append('<option value="' + v.ToyID + '">' + v.Name + '</option>');
+            });
+        });
     };
 
 });
