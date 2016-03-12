@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //Replace with your own API if you have it functioning for Toys, Colors, and Users
-    var baseURI = "http://toyauctionapi.azurewebsites.net/api/";
+    var baseURI = "http://toy-auction761.azurewebsites.net/api/";
     // Create jQuery objects representing the UI elements
     var usernametext = $('input#user_name');
     var toynametext = $('input#toy_name');
@@ -54,16 +54,17 @@ $(document).ready(function () {
 
     // TODO: Add a  button click event handler using AJAX  to delete a Toy
     $('#deleteToy').click(function () {
+        var url = baseURI + "toys/" + toydropdown.val();
         $.ajax({
             url: baseURI + "toys/" + toydropdown.val(),
-            method: "DELETE",
-            data: {
-            }
+            method: 'DELETE'
         }).done(function (result) {
-            // display a message that the toy is added
+            // display a message that the toy is removed
             $('<p></p>').html(result.Name + ' toy removed!').prependTo('section#toy');
             // TODO: refresh the toy dropdown list
             getToys(toydropdown);
+        }).fail(function(error) {
+            alert(error);
         });
     });
 
