@@ -1,7 +1,6 @@
 $(document).ready(function(){
     //Replace with your own API if you have it functioning for Toys, Colors, and Users
-
-    var baseURI = "http://localhost:62798/";//this is the address for the REST API I created on 3/7/17
+    var baseURI = "http://localhost:62798/api/";//this is the address for the REST API I created on 3/7/17
     //var baseURI = "http://toyauctionapi.azurewebsites.net/api/";
 	// Create jQuery objects representing the UI elements
     var usernametext = $('input#user_name');

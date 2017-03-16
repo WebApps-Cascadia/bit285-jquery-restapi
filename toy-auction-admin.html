@@ -43,8 +43,8 @@ $( "#toy_search" ).autocomplete({
 	source: function( request, response ) {
         $.ajax({
 						type : 'Get',
-						//url: "http://localhost:62798/",
-						url: 'http://toyauctionapi.azurewebsites.net/api/toys/',
+						url: "http://localhost:62798/api/toys/",
+						//url: 'http://toyauctionapi.azurewebsites.net/api/toys/',
 						data: {name:request.term },
             success: function(data) {
                 response( $.map( data, function(item) {
